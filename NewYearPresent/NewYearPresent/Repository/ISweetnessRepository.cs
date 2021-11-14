@@ -2,12 +2,12 @@
 
 namespace NewYearPresent.Repository
 {
-    public interface ISweetnessRepository<T> where T : ISweetness
+    public interface ISweetnessRepository<in T>
     {
         void GetAll();
-        void Add(ISweetness sweet);
-        void Add(params ISweetness[] sweets);
-        void Remove(ISweetness sweet);
+        void Add(T value);
+        void Add(params T[] values);
+        void Remove(T value);
         void RemoveAt(int id);
     }
 }

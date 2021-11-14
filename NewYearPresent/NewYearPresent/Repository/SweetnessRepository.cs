@@ -58,7 +58,7 @@ namespace NewYearPresent.Repository
             }
             catch (ArgumentOutOfRangeException)
             {
-                Console.WriteLine("Id is incorrect");
+                Console.WriteLine("ID is incorrect");
                 throw;
             }
         }

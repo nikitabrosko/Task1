@@ -1,4 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Linq;
+using System.Collections.Generic;
 using NewYearPresent.Sweets;
 
 namespace NewYearPresent.CandyBox
@@ -7,8 +10,8 @@ namespace NewYearPresent.CandyBox
     {
         private ICollection<ISweetness> _sweets = new List<ISweetness>();
         private decimal _price;
-        private float _amountOfSweets;
         private float _currentWeight;
+        private bool _isWeightExceeded = false;
 
         public IEnumerable<ISweetness> Sweets{ get => _sweets; }
         public string Name { get; set; }
@@ -32,7 +35,6 @@ namespace NewYearPresent.CandyBox
         public float AmountOfSweets
         {
             get => _sweets.Count;
-            private set => _amountOfSweets = value;
         }
         public float CurrentWeight
         {
@@ -56,13 +58,25 @@ namespace NewYearPresent.CandyBox
             MaxWeight = size;
             Description = description;
             Price = 0;
-            AmountOfSweets = 0;
             CurrentWeight = 0;
+        }
+
+        private void CheckCurrentWeightState(ISweetness sweetness)
+        {
+            if ((CurrentWeight + sweetness.Weight) >= (ushort)MaxWeight)
+            {
+                _isWeightExceeded = true;
+            }
         }
 
         public void Add(ISweetness sweetness)
         {
-            _sweets.Add(sweetness);
+            CheckCurrentWeightState(sweetness);
+
+            if (!_isWeightExceeded)
+            {
+                _sweets.Add(sweetness);
+            }
         }
 
         public void Add(IEnumerable<ISweetness> sweets)
@@ -71,6 +85,40 @@ namespace NewYearPresent.CandyBox
             {
                 Add(sweetness);
             }
+        }
+
+        public void GenerateRandomCandyBox(IList<ISweetness> sweets)
+        {
+            Random random = new Random();
+
+            while (!_isWeightExceeded)
+            {
+                Add(sweets[random.Next(0, sweets.Count - 1)]);
+            }
+        }
+
+        public void SortBy(SortParameters parameter)
+        {
+            switch (parameter)
+            {
+                case SortParameters.Name:
+                    _sweets = _sweets.OrderBy(x => x.Name).ToList();
+                    break;
+                case SortParameters.Price:
+                    _sweets = _sweets.OrderBy(x => x.Price).ToList();
+                    break;
+                case SortParameters.Weight:
+                    _sweets = _sweets.OrderBy(x => x.Weight).ToList();
+                    break;
+                case SortParameters.AmountOfSugar:
+                    _sweets = _sweets.OrderBy(x => x.AmountOfSugar).ToList();
+                    break;
+            }
+        }
+
+        public IEnumerable<ISweetness> FindSweetnessWithRangeOfSugarAmount(float min, float max)
+        {
+            return _sweets.Where(x => x.AmountOfSugar >= min && x.AmountOfSugar <= max);
         }
     }
 }
