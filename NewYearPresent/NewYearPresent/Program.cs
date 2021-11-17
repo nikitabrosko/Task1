@@ -14,16 +14,13 @@ namespace NewYearPresent
             var sweetnessRepository = new SweetnessRepository();
             sweetnessRepository.GetAll();
 
-            var candyBox1 = new CandyBox.CandyBox("New Year", Size.Medium, "It's a most popular New Year's present!");
-            candyBox1.Add(sweetnessRepository.Sweets);
+            var candyBoxesRepository = new CandyBoxRepository();
+            candyBoxesRepository.GetAll();
 
-            var candyBox2 = new CandyBox.CandyBox("Random box", Size.Large, "It's a random candy box");
-            candyBox2.GenerateRandomCandyBox(sweetnessRepository.Sweets.ToList());
-
-            Print(candyBox2);
-            Sort(candyBox2);
-            PrintAllSweets(candyBox2);
-            PrintSweetsInRangeOfSugar(candyBox2);
+            Print(candyBoxesRepository.CandyBoxes.ToList()[1]);
+            Sort(candyBoxesRepository.CandyBoxes.ToList()[1]);
+            PrintAllSweets(candyBoxesRepository.CandyBoxes.ToList()[1]);
+            PrintSweetsInRangeOfSugar(candyBoxesRepository.CandyBoxes.ToList()[1]);
         }
 
         public static void PrintSweetsInRangeOfSugar(CandyBox.CandyBox candyBox)

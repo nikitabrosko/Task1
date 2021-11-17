@@ -9,57 +9,15 @@ namespace NewYearPresent.CandyBox
     public class CandyBox
     {
         private ICollection<ISweetness> _sweets = new List<ISweetness>();
-        private decimal _price;
-        private float _currentWeight;
         private bool _isWeightExceeded = false;
 
         public IEnumerable<ISweetness> Sweets{ get => _sweets; }
         public string Name { get; set; }
         public Size MaxWeight { get; set; }
         public string Description { get; set; }
-        public decimal Price
-        {
-            get
-            {
-                _price = 0;
-
-                foreach (var sweetness in _sweets)
-                {
-                    _price += sweetness.Price;
-                }
-
-                return _price;
-            }
-            private set => _price = value;
-        }
-        public float AmountOfSweets
-        {
-            get => _sweets.Count;
-        }
-        public float CurrentWeight
-        {
-            get
-            {
-                _currentWeight = 0;
-
-                foreach (var sweetness in _sweets)
-                {
-                    _currentWeight += sweetness.Weight;
-                }
-
-                return _currentWeight;
-            }
-            private set => _currentWeight = value;
-        }
-
-        public CandyBox(string name, Size size, string description)
-        {
-            Name = name;
-            MaxWeight = size;
-            Description = description;
-            Price = 0;
-            CurrentWeight = 0;
-        }
+        public decimal Price { get; set; }
+        public int AmountOfSweets { get; set; }
+        public float CurrentWeight { get; set; }
 
         private void CheckCurrentWeightState(ISweetness sweetness)
         {

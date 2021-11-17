@@ -4,7 +4,7 @@
     {
         string Name { get; set; }
         decimal Price { get; set; }
-        ushort Weight { get; set; }
+        float Weight { get; set; }
         float AmountOfSugar { get; set; }
     }
 }
