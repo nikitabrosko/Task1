@@ -37,7 +37,7 @@ namespace NewYearPresent.CandyBox
             }
         }
 
-        public void Add(IEnumerable<ISweetness> sweets)
+        public void Add(params ISweetness[] sweets)
         {
             foreach (var sweetness in sweets)
             {
