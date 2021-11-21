@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NewYearPresent.Sweets;
@@ -59,6 +60,21 @@ namespace NewYearPresent.CandyBox
             {
                 Add(sweetness);
             }
+        }
+
+        public void Remove(ISweetness sweetness)
+        {
+            _sweets.Remove(sweetness);
+        }
+
+        public void RemoveAt(int id)
+        {
+            if (id >= AmountOfSweets)
+            {
+                throw new ArgumentOutOfRangeException(nameof(id));
+            }
+
+            _sweets.Remove(_sweets[id]);
         }
 
         public void SortBy(SortParameters parameter)
