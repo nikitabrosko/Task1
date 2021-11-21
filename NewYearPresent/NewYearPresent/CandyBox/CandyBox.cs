@@ -10,11 +10,43 @@ namespace NewYearPresent.CandyBox
         private IList<ISweetness> _sweets = new List<ISweetness>();
 
         public IEnumerable<ISweetness> Sweets { get => new ReadOnlyCollection<ISweetness>(_sweets); }
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
+        public string Name { get; }
+        public string Description { get; }
+        public decimal Price
+        {
+            get
+            {
+                decimal totalPrice = 0;
+
+                foreach (var sweetness in _sweets)
+                {
+                    totalPrice += sweetness.Price;
+                }
+
+                return totalPrice;
+            }
+        }
         public int AmountOfSweets { get => _sweets.Count; }
-        public float CurrentWeight { get; set; }
+        public float CurrentWeight
+        {
+            get
+            {
+                float totalWeight = 0;
+
+                foreach (var sweetness in _sweets)
+                {
+                    totalWeight += sweetness.Weight;
+                }
+
+                return totalWeight;
+            }
+        }
+
+        public CandyBox(string name, string description)
+        {
+            Name = name;
+            Description = description;
+        }
 
         public void Add(ISweetness sweetness)
         {
