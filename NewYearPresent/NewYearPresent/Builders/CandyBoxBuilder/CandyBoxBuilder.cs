@@ -8,24 +8,15 @@ namespace NewYearPresent.Builders.CandyBoxBuilder
 {
     abstract class CandyBoxBuilder : IBuilder<CandyBox.CandyBox>
     {
-        public abstract CandyBox.CandyBox CandyBox { get; set; }
+        public abstract CandyBox.CandyBox CandyBox { get; protected set; }
 
-        public void CreateCandyBox()
-        {
-            CandyBox = new CandyBox.CandyBox();
-        }
+        public abstract void CreateCandyBox();
 
-        public abstract void SetName();
-        public abstract void SetSize();
-        public abstract void SetDescription();
-        public abstract void SetSweets();
-        public abstract void SetPrice();
-        public abstract void SetCurrentWeight();
-        public abstract void SetAmountOfSweets();
+        public abstract void AddCandies();
 
         public void Reset()
         {
-            CandyBox = new CandyBox.CandyBox();
+            CandyBox = new CandyBox.CandyBox("None", "None");
         }
 
         public CandyBox.CandyBox GetResult()
