@@ -4,53 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NewYearPresent.CandyBox;
+using NewYearPresent.Sweets.ChocolateBars;
+using NewYearPresent.Sweets.Candies.CaramelCandies;
+using NewYearPresent.Sweets.Candies.ChocolateCandies;
+using NewYearPresent.Sweets.Candies.GummyCandies;
 
 namespace NewYearPresent.Builders.CandyBoxBuilder
 {
-    class NewYear : CandyBoxBuilder
+    sealed class NewYear : CandyBoxBuilder
     {
-        public override CandyBox.CandyBox CandyBox { get; set; }
-
-        public override void SetName()
+        public override CandyBox.CandyBox CandyBox { get; protected set; }
+        public override void CreateCandyBox()
         {
-            CandyBox.Name = "New Year";
+            CandyBox = new CandyBox.CandyBox("new Year", "It's a most popular New Year present!");
         }
 
-        public override void SetSize()
+        public override void AddCandies()
         {
-            CandyBox.MaxWeight = Size.Large;
+            CandyBox.Add(new Mars(), new Sorvanets(), new Malibu(), new Jelly());
         }
-
-        public override void SetDescription()
-        {
-            CandyBox.Description = "A most popular New Year present";
-        }
-
-        public override void SetSweets()
-        {
-            throw new NotImplementedException();
-        }
-
-        public override void SetPrice()
-        {
-            foreach (var sweetness in CandyBox.Sweets)
-            {
-                CandyBox.Price += sweetness.Price;
-            }
-        }
-
-        public override void SetAmountOfSweets()
-        {
-            CandyBox.AmountOfSweets = CandyBox.Sweets.Count();
-        }
-
-        public override void SetCurrentWeight()
-        {
-            foreach (var sweetness in CandyBox.Sweets)
-            {
-                CandyBox.CurrentWeight += sweetness.Weight;
-            }
-        }
-
     }
 }
