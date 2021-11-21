@@ -26,9 +26,10 @@
   <Class Name="NewYearPresent.Builders.SweetnessBuilder.CandyBuilder.Sorvanets">
     <Position X="11" Y="3.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAIAAAAAAAAABAAAQAAAAAAAAAAAAAAAAwAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAEAQAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Builders\SweetnessBuilder\CandyBuilder\Sorvanets.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="NewYearPresent.Builders.SweetnessBuilder.ChocolateBarBuilder.Mars">
     <Position X="13.5" Y="3.75" Width="1.5" />

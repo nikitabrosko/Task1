@@ -7,28 +7,19 @@ using NewYearPresent.Sweets;
 
 namespace NewYearPresent.Builders.SweetnessBuilder.CandyBuilder
 {
-    class Sorvanets : CandyBuilder
+    class Sorvanets : ISweetness
     {
-        public override ISweetness Sweetness { get; set; }
+        public string Name { get; set; }
+        public decimal Price { get; set; }
+        public float Weight { get; set; }
+        public float AmountOfSugar { get; set; }
 
-        public override void SetName()
+        public Sorvanets()
         {
-            Sweetness.Name = "Sorvanets";
-        }
-
-        public override void SetPrice()
-        {
-            Sweetness.Price = 0.35m;
-        }
-
-        public override void SetWeight()
-        {
-            Sweetness.Weight = 8.7f;
-        }
-
-        public override void SetAmountOfSugar()
-        {
-            Sweetness.AmountOfSugar = 4.3f;
+            Name = "Sorvanets";
+            Price = 0.5m;
+            Weight = 8.9f;
+            AmountOfSugar = 3.5f;
         }
     }
 }

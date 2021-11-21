@@ -2,21 +2,22 @@
 using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using NewYearPresent.Sweets;
 
 namespace NewYearPresent.CandyBox
 {
     public class CandyBox
     {
-        private ICollection<ISweetness> _sweets = new List<ISweetness>();
+        private IList<ISweetness> _sweets = new List<ISweetness>();
         private bool _isWeightExceeded = false;
 
-        public IEnumerable<ISweetness> Sweets{ get => _sweets; }
+        public IEnumerable<ISweetness> Sweets { get => new ReadOnlyCollection<ISweetness>(_sweets); }
         public string Name { get; set; }
         public Size MaxWeight { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
-        public int AmountOfSweets { get; set; }
+        public int AmountOfSweets { get => _sweets.Count; }
         public float CurrentWeight { get; set; }
 
         private void CheckCurrentWeightState(ISweetness sweetness)
