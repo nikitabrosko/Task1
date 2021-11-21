@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NewYearPresent.CandyBox;
-using NewYearPresent.Sweets.ChocolateBars;
-using NewYearPresent.Sweets.Candies.CaramelCandies;
-using NewYearPresent.Sweets.Candies.ChocolateCandies;
-using NewYearPresent.Sweets.Candies.GummyCandies;
+using NewYearPresent.Sweets;
 
 namespace NewYearPresent.Builders.CandyBoxBuilder
 {
@@ -19,9 +12,14 @@ namespace NewYearPresent.Builders.CandyBoxBuilder
             CandyBox = new CandyBox.CandyBox("new Year", "It's a most popular New Year present!");
         }
 
-        public override void AddCandies()
+        public override void AddSweetness(ISweetness sweetness)
         {
-            CandyBox.Add(new Mars(), new Sorvanets(), new Malibu(), new Jelly());
+            CandyBox.Add(sweetness);
+        }
+
+        public override void AddSweets(IEnumerable<ISweetness> sweets)
+        {
+            CandyBox.Add(sweets.ToArray());
         }
     }
 }

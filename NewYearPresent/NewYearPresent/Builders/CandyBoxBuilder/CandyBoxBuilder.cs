@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NewYearPresent.Sweets;
 
 namespace NewYearPresent.Builders.CandyBoxBuilder
 {
@@ -12,7 +13,9 @@ namespace NewYearPresent.Builders.CandyBoxBuilder
 
         public abstract void CreateCandyBox();
 
-        public abstract void AddCandies();
+        public abstract void AddSweetness(ISweetness sweetness);
+
+        public abstract void AddSweets(IEnumerable<ISweetness> sweets);
 
         public void Reset()
         {
