@@ -2,7 +2,7 @@
 
 namespace NewYearPresent.Sweets.ChocolateBars
 {
-    public abstract class ChocolateBar : ISweetness
+    abstract class ChocolateBar : ISweetness
     {
         public string Name { get; protected set; }
         public decimal Price { get; protected set; }
