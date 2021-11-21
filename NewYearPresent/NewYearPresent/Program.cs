@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Collections;
-using System.Collections.Generic;
+using NewYearPresent.Builders.CandyBoxBuilder;
 using NewYearPresent.CandyBox;
-using NewYearPresent.Repository;
 
 namespace NewYearPresent
 {
@@ -11,75 +9,42 @@ namespace NewYearPresent
     {
         static void Main(string[] args)
         {
-            var sweetnessRepository = new SweetnessRepository();
-            sweetnessRepository.GetAll();
+            Maker maker = new Maker();
 
-            var candyBoxesRepository = new CandyBoxRepository();
-            candyBoxesRepository.GetAll();
+            CandyBox.CandyBox randomCandyBox = maker.MakeRandomCandyBox(new NewYear(), 100);
 
-            Print(candyBoxesRepository.CandyBoxes.ToList()[1]);
-            Sort(candyBoxesRepository.CandyBoxes.ToList()[1]);
-            PrintAllSweets(candyBoxesRepository.CandyBoxes.ToList()[1]);
-            PrintSweetsInRangeOfSugar(candyBoxesRepository.CandyBoxes.ToList()[1]);
+            PrintCandyBox(randomCandyBox);
+
+            Sort(randomCandyBox);
+
+            PrintCandyBox(randomCandyBox);
+
+            PrintSweetsInRangeOfSugar(randomCandyBox);
         }
 
         public static void PrintSweetsInRangeOfSugar(CandyBox.CandyBox candyBox)
         {
-            Console.WriteLine("Do you want to find sweets with range of sugar amount?");
-
-            if (Console.ReadKey().Key == ConsoleKey.Enter)
-            {
-                try
-                {
-                    Console.WriteLine("Write the Min number of range");
-                    int min = int.Parse(Console.ReadLine());
-
-                    Console.WriteLine("Write the Max number of range");
-                    int max = int.Parse(Console.ReadLine());
-
-                    foreach (var sweetness in candyBox.FindSweetnessWithRangeOfSugarAmount(min, max))
-                    {
-                        Console.WriteLine(String.Concat(
-                            "Name " + sweetness.Name,
-                            " Price " + sweetness.Price,
-                            " Weight " + sweetness.Weight,
-                            " Amount of sugar: " + sweetness.AmountOfSugar));
-                    }
-                }
-                catch (ArgumentNullException)
-                {
-                    Console.WriteLine("You didn't type anything!\n Try again?");
-
-                    if (Console.ReadKey().Key == ConsoleKey.Enter)
-                    {
-                        PrintSweetsInRangeOfSugar(candyBox);
-                    }
-                }
-                catch (FormatException)
-                {
-                    Console.WriteLine("You type a wrong number!\n Try again?");
-
-                    if (Console.ReadKey().Key == ConsoleKey.Enter)
-                    {
-                        PrintSweetsInRangeOfSugar(candyBox);
-                    }
-                }
-            }
+            float min = 3.4f;
+            float max = 6.4f;
 
             Console.WriteLine();
-        }
 
-        public static void PrintAllSweets(CandyBox.CandyBox candyBox)
-        {
-            Console.WriteLine();
+            var sweets = candyBox.FindSweetnessWithRangeOfSugarAmount(min, max)
+                .GroupBy(x => x.Name)
+                .Select(x => x.First());
 
-            foreach (var sweetness in candyBox.Sweets)
+            foreach (var sweetness in sweets)
             {
                 Console.WriteLine(String.Concat(
                     "Name " + sweetness.Name,
                     " Price " + sweetness.Price,
                     " Weight " + sweetness.Weight,
                     " Amount of sugar: " + sweetness.AmountOfSugar));
+
+                var countOfSweetness = candyBox.Sweets
+                    .Count(x => x.Name.Equals(sweetness.Name));
+
+                Console.WriteLine("Count of this sweetness: " + countOfSweetness);
             }
 
             Console.WriteLine();
@@ -87,61 +52,16 @@ namespace NewYearPresent
 
         public static void Sort(CandyBox.CandyBox candyBox)
         {
-            Console.WriteLine("Do you want to sort your Candy Box?");
-
-            if (Console.ReadKey().Key == ConsoleKey.Enter)
-            {
-                Console.WriteLine("Type the parameter (Name, Price, Weight, Sugar)");
-
-                try
-                {
-                    switch (Console.ReadLine().ToLower())
-                    {
-                        case "name":
-                            candyBox.SortBy(SortParameters.Name);
-                            break;
-                        case "price":
-                            candyBox.SortBy(SortParameters.Price);
-                            break;
-                        case "weight":
-                            candyBox.SortBy(SortParameters.Weight);
-                            break;
-                        case "sugar":
-                            candyBox.SortBy(SortParameters.AmountOfSugar);
-                            break;
-                        default:
-                            throw new ArgumentException("Incorrect write!");
-                    }
-                }
-                catch (NullReferenceException)
-                {
-                    Console.WriteLine("You didn't type anything!\nTry again?");
-
-                    if (Console.ReadKey().Key == ConsoleKey.Enter)
-                    {
-                        Sort(candyBox);
-                    }
-                }
-                catch (ArgumentException)
-                {
-                    Console.WriteLine("You type a wrong word!\nTry again?");
-
-                    if (Console.ReadKey().Key == ConsoleKey.Enter)
-                    {
-                        Sort(candyBox);
-                    }
-                }
-            }
+            candyBox.SortBy(SortParameters.Name);
         }
 
-        public static void Print(CandyBox.CandyBox candyBox)
+        public static void PrintCandyBox(CandyBox.CandyBox candyBox)
         {
             Console.WriteLine(String.Concat(
-                Environment.NewLine, "Candy Box", 
-                Environment.NewLine, "Name: " + candyBox.Name, 
-                Environment.NewLine, "Size: " + candyBox.MaxWeight,
+                Environment.NewLine, "Candy Box",
+                Environment.NewLine, "Name: " + candyBox.Name,
                 Environment.NewLine, "Description: " + candyBox.Description,
-                Environment.NewLine, "Price: " + candyBox.Price,
+                Environment.NewLine, "Price: $" + candyBox.Price,
                 Environment.NewLine, "Weight: " + candyBox.CurrentWeight + "g",
                 Environment.NewLine, "Amount of sweets: " + candyBox.AmountOfSweets,
                 Environment.NewLine, "Sweets in a box: "));
@@ -150,12 +70,12 @@ namespace NewYearPresent
                 .GroupBy(x => x.Name)
                 .Select(g => g.First());
 
-            foreach (var sweet in sweets)
+            foreach (var sweetness in sweets)
             {
                 var countOfSweets = candyBox.Sweets
-                    .Count(x => x.Equals(sweet));
+                    .Count(x => x.Name.Equals(sweetness.Name));
 
-                Console.Write($"{sweet.Name}({countOfSweets}) ");
+                Console.Write($"{sweetness.Name}({countOfSweets}) ");
             }
 
             Console.WriteLine();
