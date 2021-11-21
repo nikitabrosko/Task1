@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Linq;
+﻿using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using NewYearPresent.Sweets;
@@ -10,32 +8,17 @@ namespace NewYearPresent.CandyBox
     public class CandyBox
     {
         private IList<ISweetness> _sweets = new List<ISweetness>();
-        private bool _isWeightExceeded = false;
 
         public IEnumerable<ISweetness> Sweets { get => new ReadOnlyCollection<ISweetness>(_sweets); }
         public string Name { get; set; }
-        public Size MaxWeight { get; set; }
         public string Description { get; set; }
         public decimal Price { get; set; }
         public int AmountOfSweets { get => _sweets.Count; }
         public float CurrentWeight { get; set; }
 
-        private void CheckCurrentWeightState(ISweetness sweetness)
-        {
-            if ((CurrentWeight + sweetness.Weight) >= (ushort)MaxWeight)
-            {
-                _isWeightExceeded = true;
-            }
-        }
-
         public void Add(ISweetness sweetness)
         {
-            CheckCurrentWeightState(sweetness);
-
-            if (!_isWeightExceeded)
-            {
-                _sweets.Add(sweetness);
-            }
+            _sweets.Add(sweetness);
         }
 
         public void Add(params ISweetness[] sweets)
@@ -43,16 +26,6 @@ namespace NewYearPresent.CandyBox
             foreach (var sweetness in sweets)
             {
                 Add(sweetness);
-            }
-        }
-
-        public void GenerateRandomCandyBox(IList<ISweetness> sweets)
-        {
-            Random random = new Random();
-
-            while (!_isWeightExceeded)
-            {
-                Add(sweets[random.Next(0, sweets.Count - 1)]);
             }
         }
 
