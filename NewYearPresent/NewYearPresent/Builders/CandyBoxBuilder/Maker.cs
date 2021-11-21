@@ -11,13 +11,7 @@ namespace NewYearPresent.Builders.CandyBoxBuilder
         public CandyBox.CandyBox Make(CandyBoxBuilder candyBoxBuilder)
         {
             candyBoxBuilder.CreateCandyBox();
-            candyBoxBuilder.SetName();
-            candyBoxBuilder.SetSize();
-            candyBoxBuilder.SetDescription();
-            candyBoxBuilder.SetSweets();
-            candyBoxBuilder.SetPrice();
-            candyBoxBuilder.SetCurrentWeight();
-            candyBoxBuilder.SetAmountOfSweets();
+            candyBoxBuilder.AddCandies();
             return candyBoxBuilder.GetResult();
         }
     }
