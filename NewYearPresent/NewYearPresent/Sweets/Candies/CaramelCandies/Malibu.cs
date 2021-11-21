@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace NewYearPresent.Sweets.Candies.CaramelCandies
+﻿namespace NewYearPresent.Sweets.Candies.CaramelCandies
 {
     sealed class Malibu : CaramelCandy
     {

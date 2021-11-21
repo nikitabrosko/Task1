@@ -19,7 +19,7 @@ namespace NewYearPresent.Builders.CandyBoxBuilder
                 new Malibu()
             };
 
-        public CandyBox.CandyBox Make(CandyBoxBuilder candyBoxBuilder)
+        public CandyBox.CandyBox MakeDefaultCandyBox(CandyBoxBuilder candyBoxBuilder)
         {
             candyBoxBuilder.CreateCandyBox();
             candyBoxBuilder.AddSweets(DefaultSweets);

@@ -7,9 +7,10 @@ namespace NewYearPresent.Builders.CandyBoxBuilder
     sealed class NewYear : CandyBoxBuilder
     {
         public override CandyBox.CandyBox CandyBox { get; protected set; }
+
         public override void CreateCandyBox()
         {
-            CandyBox = new CandyBox.CandyBox("new Year", "It's a most popular New Year present!");
+            CandyBox = new CandyBox.CandyBox("New Year", "It's a most popular New Year present!");
         }
 
         public override void AddSweetness(ISweetness sweetness)
