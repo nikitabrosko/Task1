@@ -3,9 +3,9 @@ using NewYearPresent.Sweets;
 
 namespace NewYearPresent.Builders.CandyBoxBuilder
 {
-    abstract class CandyBoxBuilder : IBuilder<CandyBox.CandyBox>
+    public abstract class CandyBoxBuilder : IBuilder<CandyBox.CandyBox>
     {
-        public abstract CandyBox.CandyBox CandyBox { get; protected set; }
+        protected abstract CandyBox.CandyBox CandyBox { get; set; }
 
         public abstract void CreateCandyBox();
 

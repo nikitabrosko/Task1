@@ -1,6 +1,6 @@
 ﻿namespace NewYearPresent.Builders
 {
-    interface IBuilder<T>
+    public interface IBuilder<T>
     {
         void Reset();
         T GetResult();

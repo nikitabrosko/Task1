@@ -8,7 +8,7 @@ using NewYearPresent.Sweets.Candies.GummyCandies;
 
 namespace NewYearPresent.Builders.CandyBoxBuilder
 {
-    class Maker
+    public class Maker
     {
         private IList<ISweetness> DefaultSweets =>
             new List<ISweetness>()

@@ -1,6 +1,6 @@
 ﻿namespace NewYearPresent.Sweets.Candies.GummyCandies
 {
-    abstract class GummyCandy : CandyBase
+    public abstract class GummyCandy : CandyBase
     {
         public override float AmountOfSugar
         {
