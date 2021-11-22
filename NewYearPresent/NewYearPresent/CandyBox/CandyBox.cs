@@ -6,7 +6,7 @@ using NewYearPresent.Sweets;
 
 namespace NewYearPresent.CandyBox
 {
-    public class CandyBox
+    public class CandyBox : ICandyContainer
     {
         private IList<ISweetness> _sweets = new List<ISweetness>();
 
@@ -77,9 +77,9 @@ namespace NewYearPresent.CandyBox
             _sweets.Remove(_sweets[id]);
         }
 
-        public void SortBy(SortParameters parameter)
+        public void SortBy(SortParameters sortParameter)
         {
-            switch (parameter)
+            switch (sortParameter)
             {
                 case SortParameters.Name:
                     _sweets = _sweets.OrderBy(x => x.Name).ToList();
