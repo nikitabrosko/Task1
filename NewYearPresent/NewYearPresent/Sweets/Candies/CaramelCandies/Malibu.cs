@@ -7,8 +7,6 @@
             Name = "Malibu";
             Price = 0.6m;
             Weight = 5.4f;
-
-            CalculateAmountOfSugar();
         }
     }
 }

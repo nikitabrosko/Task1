@@ -7,13 +7,15 @@ namespace NewYearPresent.Sweets.Candies
         public string Name { get; protected set; }
         public decimal Price { get; protected set; }
         public float Weight { get; protected set; }
-        public float AmountOfSugar { get; private set; }
 
-        public virtual void CalculateAmountOfSugar()
+        public virtual float AmountOfSugar
         {
-            CheckWeight();
+            get
+            {
+                CheckWeight();
 
-            AmountOfSugar = Weight / 2;
+                return Weight / 2;
+            }
         }
 
         protected void CheckWeight()

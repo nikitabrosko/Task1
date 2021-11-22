@@ -7,8 +7,6 @@
             Name = "Jelly";
             Price = 0.4m;
             Weight = 6.3f;
-
-            CalculateAmountOfSugar();
         }
     }
 }

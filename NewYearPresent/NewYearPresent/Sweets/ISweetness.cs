@@ -6,7 +6,5 @@
         decimal Price { get; }
         float Weight { get; }
         float AmountOfSugar { get; }
-
-        void CalculateAmountOfSugar();
     }
 }

@@ -2,13 +2,14 @@
 {
     abstract class CaramelCandy : CandyBase
     {
-        public new float AmountOfSugar { get; private set; }
-
-        public override void CalculateAmountOfSugar()
+        public override float AmountOfSugar
         {
-            CheckWeight();
+            get
+            {
+                CheckWeight();
 
-            AmountOfSugar = (Weight / 2.5f) + (Weight % 2);
+                return (Weight / 2.5f) + (Weight % 2);
+            }
         }
     }
 }

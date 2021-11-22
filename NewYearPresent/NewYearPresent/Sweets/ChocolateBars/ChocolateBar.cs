@@ -7,16 +7,17 @@ namespace NewYearPresent.Sweets.ChocolateBars
         public string Name { get; protected set; }
         public decimal Price { get; protected set; }
         public float Weight { get; protected set; }
-        public float AmountOfSugar { get; private set; }
-
-        public void CalculateAmountOfSugar()
+        public virtual float AmountOfSugar 
         {
-            if (Weight == 0)
+            get
             {
-                throw new ArgumentException();
-            }
+                if (Weight == 0)
+                {
+                    throw new ArgumentException();
+                }
 
-            AmountOfSugar = (Weight / 2) + (Weight % 2);
+                return (Weight / 2) + (Weight % 2);
+            }
         }
     }
 }
