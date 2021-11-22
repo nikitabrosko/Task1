@@ -1,4 +1,4 @@
-﻿namespace NewYearPresent.CandyBox
+﻿namespace NewYearPresent.CandyContainer
 {
     public enum SortParameters
     {

@@ -1,10 +1,10 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using NewYearPresent.Sweets;
 
-namespace NewYearPresent.CandyBox
+namespace NewYearPresent.CandyContainer
 {
     public class CandyBox : ICandyContainer
     {
