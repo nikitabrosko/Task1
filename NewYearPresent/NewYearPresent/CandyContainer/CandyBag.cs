@@ -17,14 +17,7 @@ namespace NewYearPresent.CandyContainer
         {
             get
             {
-                decimal totalPrice = 0;
-
-                foreach (var sweetness in _sweets)
-                {
-                    totalPrice += sweetness.Price;
-                }
-
-                return totalPrice;
+                return _sweets.Sum(sweetness => sweetness.Price);
             }
         }
         public int AmountOfSweets { get => _sweets.Count; }
@@ -32,14 +25,7 @@ namespace NewYearPresent.CandyContainer
         {
             get
             {
-                float totalWeight = 0;
-
-                foreach (var sweetness in _sweets)
-                {
-                    totalWeight += sweetness.Weight;
-                }
-
-                return totalWeight;
+                return _sweets.Sum(sweetness => sweetness.Weight);
             }
         }
 
