@@ -5,7 +5,7 @@ using NewYearPresent.Sweets;
 
 namespace NewYearPresent.Builders.CandyContainerBuilder.CandyBags
 {
-    class NewYearCandyBag : CandyContainerBuilder
+    public sealed class NewYearCandyBag : CandyContainerBuilder
     {
         protected override ICandyContainer CandyContainer { get; set; }
 
