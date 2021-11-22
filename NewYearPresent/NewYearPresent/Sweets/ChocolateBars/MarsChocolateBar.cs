@@ -1,8 +1,8 @@
 ﻿namespace NewYearPresent.Sweets.ChocolateBars
 {
-    public sealed class Mars : ChocolateBar
+    public sealed class MarsChocolateBar : ChocolateBar
     {
-        public Mars()
+        public MarsChocolateBar()
         {
             Name = "Mars";
             Price = 0.3m;
