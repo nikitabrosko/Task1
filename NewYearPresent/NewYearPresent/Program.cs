@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
 using NewYearPresent.Builders.CandyContainerBuilder;
+using NewYearPresent.Builders.CandyContainerBuilder.CandyBags;
+using NewYearPresent.Builders.CandyContainerBuilder.CandyBoxes;
 using NewYearPresent.CandyContainer;
 
 namespace NewYearPresent
@@ -11,15 +13,18 @@ namespace NewYearPresent
         {
             var maker = new Maker();
 
-            var randomCandyBox = maker.MakeRandomCandyBox(new NewYear(), 100);
+            var randomCandyBox = maker.MakeRandomCandyContainer(new NewYearCandyBox(), 100);
+            var randomCandyBag = maker.MakeRandomCandyContainer(new NewYearCandyBag(), 30);
 
-            PrintCandyBox(randomCandyBox);
-
+            PrintCandyContainer(randomCandyBox);
             Sort(randomCandyBox);
-
-            PrintCandyBox(randomCandyBox);
-
+            PrintCandyContainer(randomCandyBox);
             PrintSweetsInRangeOfSugar(randomCandyBox);
+
+            PrintCandyContainer(randomCandyBag);
+            Sort(randomCandyBag);
+            PrintCandyContainer(randomCandyBag);
+            PrintSweetsInRangeOfSugar(randomCandyBag);
         }
 
         public static void PrintSweetsInRangeOfSugar(ICandyContainer candyContainer)
@@ -55,10 +60,10 @@ namespace NewYearPresent
             candyContainer.SortBy(SortParameters.Name);
         }
 
-        public static void PrintCandyBox(ICandyContainer candyContainer)
+        public static void PrintCandyContainer(ICandyContainer candyContainer)
         {
             Console.WriteLine(string.Concat(
-                Environment.NewLine, "Candy Box",
+                Environment.NewLine, candyContainer.GetType(),
                 Environment.NewLine, "Name: " + candyContainer.Name,
                 Environment.NewLine, "Description: " + candyContainer.Description,
                 Environment.NewLine, "Price: $" + candyContainer.Price,
