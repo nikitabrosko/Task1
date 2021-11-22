@@ -1,8 +1,8 @@
 ﻿namespace NewYearPresent.Sweets.Candies.CaramelCandies
 {
-    public sealed class Malibu : CaramelCandy
+    public sealed class MalibuCaramelCandy : CaramelCandy
     {
-        public Malibu()
+        public MalibuCaramelCandy()
         {
             Name = "Malibu";
             Price = 0.6m;
