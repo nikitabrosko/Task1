@@ -1,6 +1,6 @@
 ﻿namespace NewYearPresent.Sweets.ChocolateBars
 {
-    class Mars : ChocolateBar
+    sealed class Mars : ChocolateBar
     {
         public Mars()
         {
