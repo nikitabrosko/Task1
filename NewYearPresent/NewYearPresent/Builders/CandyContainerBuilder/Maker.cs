@@ -14,10 +14,10 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
         private static IList<ISweetness> DefaultSweets =>
             new List<ISweetness>()
             {
-                new Mars(),
-                new Sorvanets(),
-                new Jelly(),
-                new Malibu()
+                new MarsChocolateBar(),
+                new SorvanetsChocolateCandy(),
+                new JellyGummyCandy(),
+                new MalibuCaramelCandy()
             };
 
         public ICandyContainer MakeDefaultCandyContainer(CandyContainerBuilder candyContainerBuilder)
@@ -45,8 +45,8 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
         {
             IList<ISweetness> sweets = new List<ISweetness>()
             {
-                new Sorvanets(),
-                new Mars()
+                new SorvanetsChocolateCandy(),
+                new MarsChocolateBar()
             };
 
             candyContainerBuilder.CreateCandyContainer();
@@ -59,7 +59,7 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
         {
             IList<ISweetness> sweets = new List<ISweetness>()
             {
-                new Malibu()
+                new MalibuCaramelCandy()
             };
 
             candyContainerBuilder.CreateCandyContainer();
@@ -72,7 +72,7 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
         {
             IList<ISweetness> sweets = new List<ISweetness>()
             {
-                new Jelly()
+                new JellyGummyCandy()
             };
 
             candyContainerBuilder.CreateCandyContainer();
