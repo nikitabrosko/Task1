@@ -1,8 +1,10 @@
-﻿namespace NewYearPresent.Builders
+﻿using NewYearPresent.CandyContainer;
+
+namespace NewYearPresent.Builders
 {
     public interface IBuilder<T>
     {
-        void Reset();
+        void Reset(ICandyContainer candyContainer);
         T GetResult();
     }
 }
