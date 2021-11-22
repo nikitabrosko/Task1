@@ -3,9 +3,9 @@ using System.Linq;
 using NewYearPresent.CandyContainer;
 using NewYearPresent.Sweets;
 
-namespace NewYearPresent.Builders.CandyContainerBuilder
+namespace NewYearPresent.Builders.CandyContainerBuilder.CandyBoxes
 {
-    public sealed class NewYear : CandyContainerBuilder
+    public sealed class NewYearCandyBox : CandyContainerBuilder
     {
         protected override ICandyContainer CandyContainer { get; set; }
 
