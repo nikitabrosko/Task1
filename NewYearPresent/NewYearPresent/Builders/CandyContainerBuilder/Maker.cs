@@ -20,18 +20,18 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
                 new Malibu()
             };
 
-        public ICandyContainer MakeDefaultCandyBox(CandyContainerBuilder candyContainerBuilder)
+        public ICandyContainer MakeDefaultCandyContainer(CandyContainerBuilder candyContainerBuilder)
         {
-            candyContainerBuilder.CreateCandyBox();
+            candyContainerBuilder.CreateCandyContainer();
             candyContainerBuilder.AddSweets(DefaultSweets);
             return candyContainerBuilder.GetResult();
         }
 
-        public ICandyContainer MakeRandomCandyBox(CandyContainerBuilder candyContainerBuilder, int countOfCandies)
+        public ICandyContainer MakeRandomCandyContainer(CandyContainerBuilder candyContainerBuilder, int countOfCandies)
         {
             var random = new Random();
 
-            candyContainerBuilder.CreateCandyBox();
+            candyContainerBuilder.CreateCandyContainer();
 
             for (int i = 0; i < countOfCandies; i++)
             {
@@ -41,7 +41,7 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
             return candyContainerBuilder.GetResult();
         }
 
-        public ICandyContainer MakeChocolateCandyBox(CandyContainerBuilder candyContainerBuilder)
+        public ICandyContainer MakeChocolateCandyContainer(CandyContainerBuilder candyContainerBuilder)
         {
             IList<ISweetness> sweets = new List<ISweetness>()
             {
@@ -49,33 +49,33 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
                 new Mars()
             };
 
-            candyContainerBuilder.CreateCandyBox();
+            candyContainerBuilder.CreateCandyContainer();
             candyContainerBuilder.AddSweets(sweets);
 
             return candyContainerBuilder.GetResult();
         }
 
-        public ICandyContainer MakeCaramelCandyBox(CandyContainerBuilder candyContainerBuilder)
+        public ICandyContainer MakeCaramelCandyContainer(CandyContainerBuilder candyContainerBuilder)
         {
             IList<ISweetness> sweets = new List<ISweetness>()
             {
                 new Malibu()
             };
 
-            candyContainerBuilder.CreateCandyBox();
+            candyContainerBuilder.CreateCandyContainer();
             candyContainerBuilder.AddSweets(sweets);
 
             return candyContainerBuilder.GetResult();
         }
 
-        public ICandyContainer MakeGummyCandyBox(CandyContainerBuilder candyContainerBuilder)
+        public ICandyContainer MakeGummyCandyContainer(CandyContainerBuilder candyContainerBuilder)
         {
             IList<ISweetness> sweets = new List<ISweetness>()
             {
                 new Jelly()
             };
 
-            candyContainerBuilder.CreateCandyBox();
+            candyContainerBuilder.CreateCandyContainer();
             candyContainerBuilder.AddSweets(sweets);
 
             return candyContainerBuilder.GetResult();

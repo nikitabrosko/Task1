@@ -9,7 +9,7 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
     {
         protected override ICandyContainer CandyContainer { get; set; }
 
-        public override void CreateCandyBox()
+        public override void CreateCandyContainer()
         {
             CandyContainer = new CandyBox("New Year", "It's a most popular New Year present!");
         }

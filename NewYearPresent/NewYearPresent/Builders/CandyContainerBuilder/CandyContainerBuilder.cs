@@ -8,7 +8,7 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
     {
         protected abstract ICandyContainer CandyContainer { get; set; }
 
-        public abstract void CreateCandyBox();
+        public abstract void CreateCandyContainer();
 
         public abstract void AddSweetness(ISweetness sweetness);
 
