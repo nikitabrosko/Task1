@@ -9,12 +9,10 @@ namespace NewYearPresent
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            var maker = new Maker();
-
-            var randomCandyBox = maker.MakeRandomCandyContainer(new NewYearCandyBox(), 100);
-            var randomCandyBag = maker.MakeRandomCandyContainer(new NewYearCandyBag(), 30);
+            var randomCandyBox = Maker.MakeRandomCandyContainer(new NewYearCandyBox(), 100);
+            var randomCandyBag = Maker.MakeRandomCandyContainer(new NewYearCandyBag(), 30);
 
             PrintCandyContainer(randomCandyBox);
             Sort(randomCandyBox);
