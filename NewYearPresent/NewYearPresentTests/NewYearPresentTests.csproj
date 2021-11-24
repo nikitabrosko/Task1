@@ -19,4 +19,8 @@
     <Folder Include="SweetsTests\CandiesTests\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\NewYearPresent\NewYearPresent.csproj" />
+  </ItemGroup>
+
 </Project>
