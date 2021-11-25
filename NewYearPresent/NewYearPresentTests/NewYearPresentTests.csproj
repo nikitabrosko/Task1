@@ -16,7 +16,6 @@
   <ItemGroup>
     <Folder Include="CandyContainerTests\" />
     <Folder Include="BuildersTests\" />
-    <Folder Include="SweetsTests\CandiesTests\" />
   </ItemGroup>
 
   <ItemGroup>
