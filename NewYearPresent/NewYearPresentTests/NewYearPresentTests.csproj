@@ -16,6 +16,9 @@
   <ItemGroup>
     <Folder Include="CandyContainerTests\" />
     <Folder Include="BuildersTests\" />
+    <Folder Include="SweetsTests\CaramelCandiesTests\" />
+    <Folder Include="SweetsTests\ChocolateCandiesTests\" />
+    <Folder Include="SweetsTests\GummyCandiesTests\" />
   </ItemGroup>
 
   <ItemGroup>
