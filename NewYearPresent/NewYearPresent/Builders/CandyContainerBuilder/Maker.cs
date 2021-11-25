@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using NewYearPresent.CandyContainer;
 using NewYearPresent.Sweets;
-using NewYearPresent.Sweets.Candies.CaramelCandies;
-using NewYearPresent.Sweets.Candies.ChocolateCandies;
-using NewYearPresent.Sweets.Candies.GummyCandies;
+using NewYearPresent.Sweets.CaramelCandies;
 using NewYearPresent.Sweets.ChocolateBars;
+using NewYearPresent.Sweets.ChocolateCandies;
+using NewYearPresent.Sweets.GummyCandies;
 
 namespace NewYearPresent.Builders.CandyContainerBuilder
 {
