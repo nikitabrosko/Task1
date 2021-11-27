@@ -34,7 +34,6 @@ namespace NewYearPresent.Sweets
                 _price = value;
             }
         }
-
         public float Weight
         {
             get => _weight;

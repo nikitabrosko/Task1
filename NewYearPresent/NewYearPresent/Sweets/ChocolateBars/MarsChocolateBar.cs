@@ -5,8 +5,8 @@
         public MarsChocolateBar()
         {
             Name = "Mars";
-            Price = 0.3m;
-            Weight = 7.5f;
+            Price = 1.3m;
+            Weight = 45.3f;
         }
     }
 }
