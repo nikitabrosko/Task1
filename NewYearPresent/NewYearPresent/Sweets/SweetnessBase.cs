@@ -21,6 +21,7 @@ namespace NewYearPresent.Sweets
                 _name = value;
             }
         }
+
         public decimal Price
         {
             get => _price;
@@ -34,6 +35,7 @@ namespace NewYearPresent.Sweets
                 _price = value;
             }
         }
+
         public float Weight
         {
             get => _weight;

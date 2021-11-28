@@ -6,13 +6,14 @@ using NewYearPresent.Sweets.CaramelCandies;
 using NewYearPresent.Sweets.ChocolateBars;
 using NewYearPresent.Sweets.ChocolateCandies;
 using NewYearPresent.Sweets.GummyCandies;
+using System.Linq;
 
 namespace NewYearPresent.Builders.CandyContainerBuilder
 {
     public class Maker
     {
-        private static IList<CaramelCandy> CaramelCandies =>
-            new List<CaramelCandy>()
+        private static IList<ISweetness> CaramelCandies =>
+            new List<ISweetness>()
             {
                 new MalibuCaramelCandy(),
                 new AlenkaCaramelCandy(),
@@ -20,8 +21,9 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
                 new MolochnayaCaramelCandy(),
                 new ZubastikiCaramelCandy()
             };
-        private static IList<ChocolateBar> ChocolateBars =>
-            new List<ChocolateBar>()
+
+        private static IList<ISweetness> ChocolateBars =>
+            new List<ISweetness>()
             {
                 new MarsChocolateBar(),
                 new BountyChocolateBar(),
@@ -29,8 +31,9 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
                 new LionChocolateBar(),
                 new SnickersChocolateBar()
             };
-        private static IList<ChocolateCandy> ChocolateCandies =>
-            new List<ChocolateCandy>()
+
+        private static IList<ISweetness> ChocolateCandies =>
+            new List<ISweetness>()
             {
                 new SorvanetsChocolateCandy(),
                 new AlenkaChocolateCandy(),
@@ -38,8 +41,9 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
                 new KuznechikChocolateCandy(),
                 new MinchankaChocolateCandy()
             };
-        private static IList<GummyCandy> GummyCandies =>
-            new List<GummyCandy>()
+
+        private static IList<ISweetness> GummyCandies =>
+            new List<ISweetness>()
             {
                 new JellyGummyCandy(),
                 new CrazyBeeGummyCandy(),
@@ -48,47 +52,22 @@ namespace NewYearPresent.Builders.CandyContainerBuilder
                 new MatreshkaGummyCandy()
             };
 
-        private static IList<ISweetness> GetAllSweets()
-        {
-            IList<ISweetness> sweets = new List<ISweetness>();
-
-            foreach (var caramelCandy in CaramelCandies)
-            {
-                sweets.Add(caramelCandy);
-            }
-
-            foreach (var chocolateBar in ChocolateBars)
-            {
-                sweets.Add(chocolateBar);
-            }
-
-            foreach (var chocolateCandy in ChocolateCandies)
-            {
-                sweets.Add(chocolateCandy);
-            }
-
-            foreach (var gummyCandy in GummyCandies)
-            {
-                sweets.Add(gummyCandy);
-            }
-
-            return sweets;
-        }
+        private static IEnumerable<ISweetness> AllSweets =>
+            CaramelCandies.Union(ChocolateBars).Union(ChocolateCandies).Union(GummyCandies);
 
         public static ICandyContainer MakeDefaultCandyContainer(CandyContainerBuilder candyContainerBuilder)
         {
             candyContainerBuilder.CreateCandyContainer();
-            candyContainerBuilder.AddSweets(GetAllSweets());
+            candyContainerBuilder.AddSweets(AllSweets);
             return candyContainerBuilder.GetResult();
         }
 
         public static ICandyContainer MakeRandomCandyContainer(CandyContainerBuilder candyContainerBuilder, int countOfCandies)
         {
             var random = new Random();
-
-            var sweets = GetAllSweets();
-
             candyContainerBuilder.CreateCandyContainer();
+
+            var sweets = AllSweets.ToList();
 
             for (int i = 0; i < countOfCandies; i++)
             {

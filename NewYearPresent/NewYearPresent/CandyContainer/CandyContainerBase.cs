@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NewYearPresent.Sweets;
 
 namespace NewYearPresent.CandyContainer
@@ -12,9 +10,12 @@ namespace NewYearPresent.CandyContainer
     {
         private IList<ISweetness> _sweets = new List<ISweetness>();
 
-        public IEnumerable<ISweetness> Sweets { get => new ReadOnlyCollection<ISweetness>(_sweets); }
+        public IEnumerable<ISweetness> Sweets  => new ReadOnlyCollection<ISweetness>(_sweets);
+
         public string Name { get; protected set; }
+
         public string Description { get; protected set; }
+
         public decimal Price
         {
             get
@@ -22,7 +23,9 @@ namespace NewYearPresent.CandyContainer
                 return _sweets.Sum(sweetness => sweetness.Price);
             }
         }
+
         public int AmountOfSweets { get => _sweets.Count; }
+
         public float CurrentWeight
         {
             get
