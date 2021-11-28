@@ -9,30 +9,44 @@ namespace NewYearPresent.CandyContainer
     public abstract class CandyContainerBase : ICandyContainer
     {
         private IList<ISweetness> _sweets = new List<ISweetness>();
+        private string _name;
+        private string _description;
 
         public IEnumerable<ISweetness> Sweets  => new ReadOnlyCollection<ISweetness>(_sweets);
 
-        public string Name { get; protected set; }
-
-        public string Description { get; protected set; }
-
-        public decimal Price
+        public string Name
         {
-            get
+            get => _name;
+            protected set
             {
-                return _sweets.Sum(sweetness => sweetness.Price);
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(nameof(Name));
+                }
+
+                _name = value;
             }
         }
 
-        public int AmountOfSweets { get => _sweets.Count; }
-
-        public float CurrentWeight
+        public string Description
         {
-            get
+            get => _description;
+            protected set
             {
-                return _sweets.Sum(sweetness => sweetness.Weight);
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    throw new ArgumentException(nameof(Description));
+                }
+
+                _description = value;
             }
         }
+
+        public decimal Price => _sweets.Sum(sweetness => sweetness.Price);
+
+        public int AmountOfSweets => _sweets.Count;
+
+        public float CurrentWeight => _sweets.Sum(sweetness => sweetness.Weight);
 
         public void Add(ISweetness sweetness)
         {
